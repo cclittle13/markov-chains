@@ -63,28 +63,42 @@ def make_text(chains):
 
     text = ""
 
+    first_two_words = choice(chains.keys())
 
-    # your code goes here
+    text = first_two_words[0] + " " + first_two_words[1]
+    # print text 
 
     # pull key from dictionary
     # then pick random word from list assigned to the value 
     # then add those 
 
-    for key in chains:
-        chosen_word = choice(chains[key])
-        new_tuple = (key[1], chosen_word)
-        print new_tuple
+    while first_two_words in chains:
 
-        if new_tuple in chains:
-            chosen_word = choice(chains[new_tuple])
+        # text = text + " " + first_two_words[0] + " " + first_two_words[1]
+        next_word = choice(chains[first_two_words])
+        text = text + " " + next_word
+        first_two_words = (first_two_words[1], next_word)
+       
+    # print "TEXT: ", text 
 
-        print chosen_word
+    # for key in chains:
+    #     chosen_word = choice(chains[key])
+    #     print chosen_word
+    #     new_tuple = (key[1], chosen_word)
+    #     print new_tuple
+
+    
+    #     if new_tuple in chains:
+    #         chosen_word = choice(chains[new_tuple])
+
+    #     print chosen_word
 
 
     return text
 
 
-input_path = "green-eggs.txt"
+input_path = "gettysburg.txt"
+
 
 # Open the file and turn it into one long string
 input_text = open_and_read_file(input_path)
