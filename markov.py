@@ -38,23 +38,32 @@ def make_chains(text_string):
     # your code goes here
     words = text_string.split()
 
+    # N= 4
+
     # words[i], words[i+1]is a tuple and then add words[i+2] to a list  
 
+    # for i in range(len(words) -1):
     for i in range(len(words) -1):
         key = (words[i], words[i+1])
+        # key = (words[i:i+N])
+        # key = tuple(key)
+        # print key 
         # print key 
         # prints set of words in tuple form every combination 
         # consecutive words 
         try:
             if key in chains:
                 chains[key].append(words[i+2])
+                # chains[key].append(words[N+1])
             else:
+                # chains[key] = [words[N+1]]
                 chains[key] = [words[i+2]]
             # print chains 
         except IndexError:
             pass
 
-
+    # print chains
+    # use print to print dictionary 
     return chains
 
 
@@ -96,8 +105,11 @@ def make_text(chains):
 
     return text
 
+import sys
 
-input_path = "gettysburg.txt"
+input_path = sys.argv[1]
+
+# input_path = "gettysburg.txt"
 
 
 # Open the file and turn it into one long string
